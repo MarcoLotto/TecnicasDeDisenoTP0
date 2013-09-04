@@ -2,31 +2,31 @@ package tecnicas.tp0.queue;
 
 public class TpQueue implements Queue{
 	
+	private TpQueueNode topNode;
+	private TpQueueBaseNode bottomNode;
+		
 	public TpQueue(){
+		this.bottomNode = new TpQueueBaseNode();
+		this.topNode = this.bottomNode;
 	}
 
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return (this.size() == 0);
 	}
 
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.topNode.getChildCount();
 	}
 
 	public void add(Object item) {
-		// TODO Auto-generated method stub
-		
+		this.topNode = this.bottomNode.linkNextNode(item, this.topNode);		
 	}
 
 	public Object top() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.topNode.getContainedItem();
 	}
 
 	public void remove() {
-		// TODO Auto-generated method stub
-		
+		this.topNode = this.topNode.getLastNode();		
 	}
 }
